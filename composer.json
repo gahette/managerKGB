@@ -1,2 +1,16 @@
 {
+    "name": "jbm/manager-kgb",
+    "description": "Gestion de missions et agents du KGB - Evaluation d'entrainement Backend Studi -",
+    "authors": [
+        {
+            "name": "gahette",
+            "email": "superviseur@kgb.gouv"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Router\\": "routes/"
+        }
+    },
+    "require": {}
 }
