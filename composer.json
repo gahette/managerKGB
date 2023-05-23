@@ -1,6 +1,7 @@
 {
   "name": "jbm/manager-kgb",
   "description": "Gestion de missions et agents du KGB - Evaluation d'entrainement Backend Studi -",
+  "license": "proprietary",
   "authors": [
     {
       "name": "gahette",
