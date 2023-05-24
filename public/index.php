@@ -3,6 +3,7 @@
 use Router\Router;
 
 require '../vendor/autoload.php';
+require '../connect.php';
 
 $router = new Router($_GET['url']);
 

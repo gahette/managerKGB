@@ -313,7 +313,14 @@ create table users
     created_at datetime default CURRENT_TIMESTAMP null
 );
 
-
-
 ```
 
+## exemple de fichier 'connect.php' à la racine du projet
+
+```phpregexp
+<?php
+const DB_NAME = 'maBase';
+const DB_HOST = 'host';
+const DB_USER = 'utilisateur';
+const DB_PWD = 'mot de passe';
+```

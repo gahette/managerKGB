@@ -2,8 +2,20 @@
 
 namespace App\Controllers;
 
+use Database\DBConnection;
+
 class Controller
 {
+
+    protected DBConnection $db;
+    public function __construct(DBConnection $db)
+    {
+//        if (session_status() === PHP_SESSION_NONE) {
+//            session_start();
+//        }
+
+        $this->db = $db;
+    }
     protected function view(string $path, array $params = null)
     {
 
