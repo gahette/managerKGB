@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Controllers;
-class MissionController
+class MissionController extends Controller
 {
     public function index()
     {
-        echo 'je suis la page des missions';
+        $this->view('mission.index');
     }
 
     public function show(int $id)
     {
-        echo 'je suis la mission ' . $id;
+        $this->view('mission.show', compact('id'));
     }
 }
