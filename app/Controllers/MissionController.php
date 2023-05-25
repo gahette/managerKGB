@@ -6,16 +6,16 @@ class MissionController extends Controller
 {
     public function index()
     {
-        $this->view('mission.index');
+        $stmt = $this->db->getPDO()->query("SELECT * FROM missions ORDER BY created_at DESC");
+        $missions = $stmt->fetchAll();
+        $this->view('mission.index', compact('missions'));
     }
 
     public function show(int $id)
     {
-        $req = $this->db->getPDO()->query("SELECT * FROM missions");
-        $missions = $req->fetchAll();
-        foreach ($missions as $mission){
-            echo $mission->title;
-        }
-        $this->view('mission.show', compact('id'));
+        $stmt = $this->db->getPDO()->prepare("SELECT * FROM missions WHERE id= ?");
+        $stmt->execute([$id]);
+        $mission = $stmt->fetch();
+        $this->view('mission.show', compact('mission'));
     }
 }
