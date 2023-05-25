@@ -209,7 +209,12 @@
         }, getDataAttribute: (t, e) => M(t.getAttribute(`data-bs-${F(e)}`))
     };
 
-    class ${static get Default(){return{}
+    class
+    $
+    {
+    static get Default()
+    {
+    return{}
 }
 static
 get
@@ -247,38 +252,12 @@ _typeCheckConfig(t, e = this.constructor.DefaultType)
 }
 }
 
-class W extends ${constructor(t,i){super(),(t=r(t))&&(this._element=t,this._config=this._getConfig(i),e.set(this._element,this.constructor.DATA_KEY,this))}dispose() {
-    e
-.
-
-    remove(
-
-    this
-.
-    _element
-,
-    this
-.
-    constructor
-.
-    DATA_KEY
-),
-    P
-.
-
-    off(
-
-    this
-.
-    _element
-,
-    this
-.
-    constructor
-.
-    EVENT_KEY
-)
-    ;
+class W extends
+    $
+{
+    constructor(t,i){super(),(t=r(t))&&(this._element=t,this._config=this._getConfig(i),e.set(this._element,this.constructor.DATA_KEY,this))}dispose()
+{
+    e.remove(this._element,this.constructor.DATA_KEY), P.off(this._element, this.constructor.EVENT_KEY);
 
     for(
 
@@ -452,7 +431,10 @@ P.on(document, "click.bs.button.data-api", V, (t => {
 const Q = {endCallback: null, leftCallback: null, rightCallback: null},
     X = {endCallback: "(function|null)", leftCallback: "(function|null)", rightCallback: "(function|null)"};
 
-class Y extends ${constructor(t,e){super(),this._element=t,t&&Y.isSupported()&&(this._config=this._getConfig(e),this._deltaX=0,this._supportPointerEvents=Boolean(window.PointerEvent),this._initEvents())}static
+class Y extends
+    $
+{
+    constructor(t,e){super(),this._element=t,t&&Y.isSupported()&&(this._config=this._getConfig(e),this._deltaX=0,this._supportPointerEvents=Boolean(window.PointerEvent),this._initEvents())}static
 
 get
 Default()
@@ -1691,7 +1673,10 @@ const hi = "show", di = "mousedown.bs.backdrop",
         rootElement: "(element|string)"
     };
 
-class pi extends ${constructor(t){super(),this._config=this._getConfig(t),this._isAppended=!1,this._element=null}static
+class pi extends
+    $
+{
+    constructor(t){super(),this._config=this._getConfig(t),this._isAppended=!1,this._element=null}static
 
 get
 Default()
@@ -1757,7 +1742,10 @@ _emulateAnimation(t)
 const mi = ".bs.focustrap", gi = "backward", _i = {autofocus: !0, trapElement: null},
     bi = {autofocus: "boolean", trapElement: "element"};
 
-class vi extends ${constructor(t){super(),this._config=this._getConfig(t),this._isActive=!1,this._lastTabNavDirection=null}static
+class vi extends
+    $
+{
+    constructor(t){super(),this._config=this._getConfig(t),this._isActive=!1,this._lastTabNavDirection=null}static
 
 get
 Default()
@@ -2116,7 +2104,10 @@ const Ri = new Set(["background", "cite", "href", "itemtype", "longdesc", "poste
         template: "string"
     }, Ui = {entry: "(string|element|function|null)", selector: "(string|element)"};
 
-class Gi extends ${constructor(t){super(),this._config=this._getConfig(t)}static
+class Gi extends
+    $
+{
+    constructor(t){super(),this._config=this._getConfig(t)}static
 
 get
 Default()

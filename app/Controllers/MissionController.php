@@ -2,20 +2,23 @@
 
 namespace App\Controllers;
 
+use App\Models\Mission;
+
 class MissionController extends Controller
 {
     public function index()
     {
-        $stmt = $this->db->getPDO()->query("SELECT * FROM missions ORDER BY created_at DESC");
-        $missions = $stmt->fetchAll();
+        $mission = new Mission($this->getDB());
+        $missions = $mission->all();
+
         $this->view('mission.index', compact('missions'));
     }
 
     public function show(int $id)
     {
-        $stmt = $this->db->getPDO()->prepare("SELECT * FROM missions WHERE id= ?");
-        $stmt->execute([$id]);
-        $mission = $stmt->fetch();
+        $mission = new Mission($this->getDB());
+        $mission = $mission->findByID($id);
+
         $this->view('mission.show', compact('mission'));
     }
 }

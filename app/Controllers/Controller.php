@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use Database\DBConnection;
 
-class Controller
+abstract class Controller
 {
 
     protected DBConnection $db;
@@ -25,5 +25,10 @@ class Controller
         $content = ob_get_clean();
         $layout = 'layouts/default';
         require VIEWS . DIRECTORY_SEPARATOR . $layout . '.php';
+    }
+
+    protected function getDB(): DBConnection
+    {
+        return $this->db;
     }
 }

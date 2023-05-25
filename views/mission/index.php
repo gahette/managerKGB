@@ -1,3 +1,5 @@
+<h2>Les Missions</h2>
+
 <?php
 foreach ($params['missions'] as $mission): ?>
 <div class="card mb-3">
