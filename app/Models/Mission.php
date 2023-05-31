@@ -81,7 +81,7 @@ class Mission extends Model
     public function getAgents()
     {
         return $this->query("
-        SELECT a.* FROM agents a,
+        SELECT a.* FROM agents a 
         INNER JOIN agent_mission am on a.id = am.agent_id
         WHERE am.mission_id = ?", [$this->id]);
     }

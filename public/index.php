@@ -4,6 +4,8 @@ use Router\Router;
 
 require '../vendor/autoload.php';
 require '../connect.php';
+require '../app/tools/helpers.php';
+
 
 $router = new Router($_GET['url']);
 

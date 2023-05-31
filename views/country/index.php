@@ -5,35 +5,35 @@
         <div class="col-md-4">
             <div class="card mb-3">
                 <div class="card-body">
-                    <h2 class="text-info"><?= $country->getName() ?></h2>
+                    <h2 class="text-info"><?= e($country->getName()) ?></h2>
                     <div>
                         <?php foreach ($country->getMissions() as $mission): ?>
-                            <p class="badge bg-dark-subtle"><a href="/managerKGB/mission/<?= $mission->getId() ?>"
-                                                               class="text-white link-underline link-underline-opacity-0"><?= $mission->name_code ?></a>
+                            <p class="badge bg-dark-subtle"><a href="/managerKGB/mission/<?= e($mission->getId()) ?>"
+                                                               class="text-white link-underline link-underline-opacity-0"><?= e($mission->name_code) ?></a>
                             </p>
                         <?php endforeach; ?>
                         <?php foreach ($country->getAgents() as $agent): ?>
-                            <p class="badge bg-primary"><a href="/managerKGB/agent/<?= $agent->getId() ?>"
-                                                           class="text-white link-underline link-underline-opacity-0"><?= $agent->id_code ?></a>
+                            <p class="badge bg-primary"><a href="/managerKGB/agent/<?= e($agent->getId()) ?>"
+                                                           class="text-white link-underline link-underline-opacity-0"><?= e($agent->id_code) ?></a>
                             </p>
                         <?php endforeach; ?>
                         <?php foreach ($country->getContacts() as $contact): ?>
-                            <p class="badge bg-primary"><a href="/managerKGB/contact/<?= $contact->getId() ?>"
-                                                           class="text-white link-underline link-underline-opacity-0"><?= $contact->name_code ?></a>
+                            <p class="badge bg-primary"><a href="/managerKGB/contact/<?= e($contact->getId()) ?>"
+                                                           class="text-white link-underline link-underline-opacity-0"><?= e($contact->name_code) ?></a>
                             </p>
                         <?php endforeach; ?>
                         <?php foreach ($country->getTargets() as $target): ?>
-                            <p class="badge bg-primary"><a href="/managerKGB/target/<?= $target->getId() ?>"
-                                                           class="text-white link-underline link-underline-opacity-0"><?= $target->name_code ?></a>
+                            <p class="badge bg-primary"><a href="/managerKGB/target/<?= e($target->getId()) ?>"
+                                                           class="text-white link-underline link-underline-opacity-0"><?= e($target->name_code) ?></a>
                             </p>
                         <?php endforeach; ?>
                         <?php foreach ($country->getHideouts() as $hideout): ?>
-                            <p class="badge bg-primary"><a href="/managerKGB/hideout/<?= $hideout->getId() ?>"
-                                                           class="text-white link-underline link-underline-opacity-0"><?= $hideout->code ?></a>
+                            <p class="badge bg-primary"><a href="/managerKGB/hideout/<?= e($hideout->getId()) ?>"
+                                                           class="text-white link-underline link-underline-opacity-0"><?= e($hideout->code) ?></a>
                             </p>
                         <?php endforeach; ?>
                     </div>
-                    <a href="/managerKGB/country/<?= $country->getId() ?>" class="btn btn-dark">Voir plus sur ce pays</a>
+                    <a href="/managerKGB/country/<?= e($country->getId()) ?>" class="btn btn-dark">Voir plus sur ce pays</a>
                 </div>
             </div>
         </div>
