@@ -73,7 +73,7 @@ class Mission extends Model
     public function getCountries()
     {
         return $this->query("
-                    SELECT c.name, c.id FROM countries c 
+                    SELECT c.*, c.id FROM countries c 
                     INNER JOIN country_mission cm on c.id = cm.`country_id` 
                     WHERE cm.mission_id = ?", [$this->id]);
     }
@@ -81,8 +81,54 @@ class Mission extends Model
     public function getAgents()
     {
         return $this->query("
-        SELECT a.* FROM agents a 
+        SELECT a.* FROM agents a,
         INNER JOIN agent_mission am on a.id = am.agent_id
         WHERE am.mission_id = ?", [$this->id]);
     }
-}
+
+    public function getStatus()
+    {
+        return $this->query("
+        SELECT s.* FROM status s 
+        INNER JOIN mission_status ms on s.id = ms.status_id
+        WHERE ms.mission_id = ?", [$this->id]);
+    }
+
+    public function getSpecialities()
+    {
+        return $this->query("
+        SELECT s.* FROM specialities s 
+        INNER JOIN mission_speciality ms on s.id = ms.speciality_id
+        WHERE ms.mission_id = ?", [$this->id]);
+    }
+
+    public function getContacts()
+    {
+        return $this->query("
+        SELECT c.* FROM contacts c 
+        INNER JOIN contact_mission cm on c.id = cm.contact_id
+        WHERE cm.mission_id = ?", [$this->id]);
+    }
+    public function getTargets()
+    {
+        return $this->query("
+        SELECT t.* FROM targets t 
+        INNER JOIN mission_target mt on t.id = mt.target_id
+        WHERE mt.mission_id = ?", [$this->id]);
+    }
+    public function getHideouts()
+    {
+        return $this->query("
+        SELECT h.* FROM hideouts h 
+        INNER JOIN hideout_mission hm on h.id = hm.hideout_id
+        WHERE hm.mission_id = ?", [$this->id]);
+    }
+
+    public function getTypesMissions()
+    {
+        return $this->query("
+        SELECT t.* FROM types_missions t
+        INNER JOIN mission_type mt on t.id = mt.type_id
+        WHERE mt.mission_id = ?", [$this->id]);
+    }
+  }

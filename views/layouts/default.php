@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" class="h-100">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport"
@@ -10,7 +10,7 @@
 
         <title>Gestion des données du KGB</title>
     </head>
-    <body>
+    <body class="d-flex flex-column h-100">
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/managerKGB">Gestion des données du KGB</a>
@@ -27,6 +27,18 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/managerKGB/countries">Les Pays</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/managerKGB/agents">Les Agents</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/managerKGB/contacts">Les Contacts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/managerKGB/targets">Les Cibles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/managerKGB/hideouts">Les Planques</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
