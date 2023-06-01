@@ -7,7 +7,8 @@ use Exception;
 
 class Target extends Model
 {
-protected $table = 'targets';
+    protected $table = 'targets';
+    public $perPage = "9";
     private int $id;
     private string $lastname;
 
@@ -63,6 +64,7 @@ protected $table = 'targets';
                   INNER JOIN country_target ct on c.id = ct.country_id
                     WHERE target_id = ?", [$this->id]);
     }
+
     public function getMissions()
     {
         return $this->query("
@@ -70,6 +72,7 @@ protected $table = 'targets';
                   INNER JOIN mission_target mt on m.id = mt.mission_id
                     WHERE `mt`.target_id = ?", [$this->id]);
     }
+
     public function getCountriesMissions()
     {
         return $this->query("

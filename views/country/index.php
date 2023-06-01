@@ -1,3 +1,13 @@
+<?php
+
+use App\Models\Country;
+
+$pages = (new Country($this->db))->getPages();
+$pagination = (new Country($this->db));
+$link = "countries";
+?>
+
+
 <h2 class="m-3">Les Pays</h2>
 
 <div class="row">
@@ -39,3 +49,24 @@
         </div>
     <?php endforeach; ?>
 </div>
+
+<div class="pagination justify-content-center mb-3"><?= $pagination->paginateInfo(); ?></div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="?page=1">&laquo;&laquo;&laquo;</a>
+        </li>
+        <li class="page-item">
+            <?= $pagination->paginatedPrevious($link); ?>
+        </li>
+        <li class="page-item d-flex">
+            <?= $pagination->paginatedNumber($link); ?>
+        </li>
+        <li class="page-item">
+            <?= $pagination->paginatedNext($link); ?>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?page=<?= $pages ?>">&raquo;&raquo;&raquo;</a>
+        </li>
+    </ul>
+</nav>

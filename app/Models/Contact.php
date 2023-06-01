@@ -8,6 +8,7 @@ use Exception;
 class Contact extends Model
 {
     protected $table = 'contacts';
+    public $perPage = "9";
     private int $id;
     private string $lastname;
 

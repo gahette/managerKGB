@@ -9,6 +9,8 @@ class Mission extends Model
 {
     protected $table = 'missions';
 
+    public $perPage = 4;
+
     private int $id;
     private string $title;
     private string $content;

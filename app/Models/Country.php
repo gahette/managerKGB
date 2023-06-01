@@ -5,6 +5,7 @@ namespace App\Models;
 class Country extends Model
 {
     public $table = "countries";
+    public $perPage = 12;
     private int $id;
     private string $name;
     private string $nationalities;

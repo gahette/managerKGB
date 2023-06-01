@@ -5,6 +5,7 @@ namespace App\Models;
 class Hideout extends Model
 {
     protected $table = 'hideouts';
+    public $perPage = "9";
 
     private int $id;
 

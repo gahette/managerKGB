@@ -8,9 +8,13 @@ use App\Models\Country;
 use App\Models\Hideout;
 use App\Models\Mission;
 use App\Models\Target;
+use Exception;
 
 class MissionController extends Controller
 {
+    /**
+     * @throws Exception
+     */
     public function index()
     {
         $mission = new Mission($this->getDB());

@@ -7,7 +7,8 @@ use Exception;
 
 class Agent extends Model
 {
-    public $table = "agents";
+    protected $table = "agents";
+    public $perPage = "9";
 
     private int $id;
     private string $lastname;

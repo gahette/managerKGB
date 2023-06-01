@@ -1,4 +1,14 @@
- <h2 class="m-3">Les Agents</h2>
+<?php
+
+
+use App\Models\Agent;
+
+$pages = (new Agent($this->db))->getPages();
+$pagination = (new Agent($this->db));
+$link = "agents";
+?>
+
+<h2 class="m-3">Les Agents</h2>
 
         <div class="row">
             <?php foreach ($params['agents'] as $agent): ?>
@@ -26,3 +36,24 @@
                 </div>
             <?php endforeach; ?>
         </div>
+
+ <div class="pagination justify-content-center mb-3"><?= $pagination->paginateInfo(); ?></div>
+ <nav aria-label="Page navigation example">
+     <ul class="pagination justify-content-center">
+         <li class="page-item">
+             <a class="page-link" href="?page=1">&laquo;&laquo;&laquo;</a>
+         </li>
+         <li class="page-item">
+             <?= $pagination->paginatedPrevious($link); ?>
+         </li>
+         <li class="page-item d-flex">
+             <?= $pagination->paginatedNumber($link); ?>
+         </li>
+         <li class="page-item">
+             <?= $pagination->paginatedNext($link); ?>
+         </li>
+         <li class="page-item">
+             <a class="page-link" href="?page=<?= $pages ?>">&raquo;&raquo;&raquo;</a>
+         </li>
+     </ul>
+ </nav>

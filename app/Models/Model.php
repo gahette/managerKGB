@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\URL;
 use Database\DBConnection;
+use Exception;
 use PDO;
 
 abstract class Model
@@ -10,17 +12,38 @@ abstract class Model
     protected DBConnection $db;
     protected $table;
 
+    protected $perPage;
+
+//    private $stmt;
+
     public function __construct(DBConnection $db)
     {
         $this->db = $db;
     }
 
+    /**
+     * @throws Exception
+     */
     public function all(string $order): array
     {
         $sql = "SELECT * FROM $this->table";
 
-        if ($order) {
-            $sql .= " ORDER BY " . $order;
+        if ($this->stmt === null) {
+            // Numéro de la page courante
+            $currentPage = $this->getCurrentPage();
+            $pages = $this->getPages();
+            if ($currentPage > $pages) {
+                throw new Exception('Cette page n\'existe pas');
+            }
+            // Calcul de de l'offset
+            $offset = $this->perPage * ($currentPage - 1);
+
+            if ($order) {
+                $sql .= " ORDER BY " . $order;
+            }
+            if ($this->perPage) {
+                $sql .= " LIMIT " . $this->perPage . " OFFSET " . $offset;
+            }
         }
         return $this->query($sql);
     }
@@ -54,5 +77,81 @@ abstract class Model
             $stmt->execute($param);
         }
         return $stmt->$fetch();
+    }
+
+    /**
+     * @throws Exception
+     */
+    private function getCurrentPage(): int
+    {
+        return URL::getPositiveInt('page', 1);
+    }
+    public function getPages(): int
+    {
+        $count = (int)$this->db->getPDO()
+            ->query("SELECT COUNT($this->table.id) FROM $this->table")
+            ->fetch(PDO::FETCH_NUM)[0];
+        if ($count === 0) {
+            return 1;
+        }
+        $perPage = $this->perPage;
+        return ceil($count / $perPage);
+    }
+    public function paginateInfo(): string
+    {
+        $pages = $this->getPages();
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        } else {
+            $page = $_GET['page'];
+        }
+        return <<<HTLM
+<div>Affichage de la page $page sur $pages pages</div>
+HTLM;
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function paginatedPrevious($link): ?string
+    {
+        $currentPage = $this->getCurrentPage();
+        if ($currentPage <= 1) return null;
+        if ($currentPage > 2) $link .= "?page=" . ($currentPage - 1);
+        return <<<HTML
+<a class="page-link" href="$link">&laquo;</a>
+HTML;
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function paginatedNext(string $link): ?string
+    {
+        $currentPage = $this->getCurrentPage();
+        $pages = $this->getPages();
+        if ($currentPage >= $pages) return null;
+        $link .= "?page=" . ($currentPage + 1);
+        return <<<HTML
+<a  class="page-link" href= "$link">&raquo;</a>
+HTML;
+    }
+
+
+    /**
+     * @throws Exception
+     */
+    public function paginatedNumber($link)
+    {
+        $currentPage = $this->getCurrentPage();
+        $pages = $this->getPages();
+
+        for ($i = 1; $i <= $pages; $i++) {
+            if ($i == $currentPage) {
+                echo "<a class='page-link active' href='" . $link . "?page=" . $i . "'>" . $i . "</a>";
+            } else {
+                echo "<a class='page-link' href='" . $link . "?page=" . $i . "'>" . $i . "</a>";
+            }
+        }
     }
 }
