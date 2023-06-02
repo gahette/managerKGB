@@ -2,6 +2,8 @@
 
 namespace Router;
 
+use App\Exceptions\NotFoundException;
+
 class Router
 {
     public string $url;
@@ -21,13 +23,17 @@ class Router
         $this->routes['GET'][] = new Route($path, $action);
     }
 
+
+    /**
+     * @throws NotFoundException
+     */
     public function run()
     {
         foreach ($this->routes[$_SERVER['REQUEST_METHOD']] as $route) {
             if ($route->matches($this->url)) {
-                $route->execute();
+                return $route->execute();
             }
         }
-        header('HTTP/1.0 404 Not Found');
+        throw new NotFoundException("La page demandée est introuvable");
     }
 }

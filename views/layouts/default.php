@@ -67,6 +67,14 @@
             <?= $content ?>
         </div>
 
+        <footer class="bg-light py-4 footer mt-auto">
+            <div class="container">
+                <?php if (defined('DEBUG_TIME')): ?>
+                page générée en <?= round(1000 * (microtime(true) - DEBUG_TIME)) ?>ms
+                <?php endif; ?>
+            </div>
+        </footer>
+
         <script src="<?= SCRIPTS . 'js' . DIRECTORY_SEPARATOR . 'main.js'?>"></script>
     </body>
 </html>

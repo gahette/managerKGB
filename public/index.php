@@ -1,10 +1,19 @@
 <?php
 
+use App\Exceptions\NotFoundException;
 use Router\Router;
+use Whoops\Handler\PrettyPageHandler;
+use Whoops\Run;
 
 require '../vendor/autoload.php';
 require '../connect.php';
 require '../app/tools/helpers.php';
+
+define('DEBUG_TIME', microtime(true)); //constante temps actuelle
+
+$whoops = new Run;
+$whoops->pushHandler(new PrettyPageHandler);
+$whoops->register();
 
 
 $router = new Router($_GET['url']);
@@ -36,4 +45,9 @@ $router->get('targets', 'App\Controllers\TargetController@index');
 //====== Hideouts ======
 $router->get('hideouts', 'App\Controllers\HideoutController@index');
 
-$router->run();
+
+try {
+    $router->run();
+} catch (NotFoundException $e) {
+    $e->errorNotFound();
+}

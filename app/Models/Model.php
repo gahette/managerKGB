@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Exceptions\NotFoundException;
 use App\URL;
 use Database\DBConnection;
 use Exception;
@@ -15,6 +16,7 @@ abstract class Model
     protected $perPage;
 
 //    private $stmt;
+    private $stmt;
 
     public function __construct(DBConnection $db)
     {
@@ -33,7 +35,7 @@ abstract class Model
             $currentPage = $this->getCurrentPage();
             $pages = $this->getPages();
             if ($currentPage > $pages) {
-                throw new Exception('Cette page n\'existe pas');
+                throw new NotFoundException('Cette page n\'existe pas');
             }
             // Calcul de de l'offset
             $offset = $this->perPage * ($currentPage - 1);
@@ -48,10 +50,17 @@ abstract class Model
         return $this->query($sql);
     }
 
+    /**
+     * @throws NotFoundException
+     */
     public function findById(int $id): Model
     {
         $sql = "SELECT * FROM $this->table WHERE $this->table.id = ?";
-        return $this->query($sql, [$id], true);
+        $result = $this->query($sql, [$id], true);
+             if ($result === false){
+            throw new NotFoundException("cette id n'existe pas");
+        }
+        return $result;
     }
 
     public function query(string $sql, array $param = null, bool $single = null)

@@ -16,6 +16,8 @@
     }
   },
   "require": {
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "symfony/var-dumper": "^5.4",
+    "filp/whoops": "^2.15"
   }
 }

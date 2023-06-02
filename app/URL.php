@@ -2,10 +2,14 @@
 
 namespace App;
 
+use App\Exceptions\NotFoundException;
 use Exception;
 
 class URL
 {
+    /**
+     * @throws NotFoundException
+     */
     public static function getInt(string $name, ?int $default = null): ?int
     {
         if (!isset($_GET[$name])) return $default;
@@ -13,19 +17,19 @@ class URL
 
         // Vérification si le numéro de page est un entier
         if (!filter_var($_GET[$name], FILTER_VALIDATE_INT)) {
-            throw new Exception("Le paramètre '$name' dans l'url n'est pas un entier");
+            throw new NotFoundException("Le paramètre '$name' dans l'url n'est pas un entier");
         }
         return (int)$_GET[$name];
     }
 
     /**
-     * @throws Exception
+     * @throws NotFoundException
      */
     public static function getPositiveInt(string $name, ?int $default = null): ?int
     {
         $param = self::getInt($name, $default); // appelle a la classe courante(self)
         if ($param !== null && $param <= 0){
-            throw new Exception("Le paramètre '$name' dans l'url n'est pas un entier positif");
+            throw new NotFoundException("Le paramètre '$name' dans l'url n'est pas un entier positif");
         }
         return $param;
     }
