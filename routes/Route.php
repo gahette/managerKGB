@@ -2,7 +2,6 @@
 
 namespace Router;
 
-use App\Exceptions\NotFoundException;
 use Database\DBConnection;
 
 class Route

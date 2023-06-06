@@ -45,6 +45,13 @@ $router->get('targets', 'App\Controllers\TargetController@index');
 //====== Hideouts ======
 $router->get('hideouts', 'App\Controllers\HideoutController@index');
 
+//====== Admin/Missions======
+$router->get('/admin/missions', 'App\Controllers\Admin\AdminMissionController@index');
+$router->get('/admin/missions/create', 'App\Controllers\Admin\AdminMissionController@create');
+$router->post('/admin/missions/create', 'App\Controllers\Admin\AdminMissionController@createMission');
+$router->post('admin/missions/delete/:id', 'App\Controllers\Admin\AdminMissionController@delete');
+$router->get('admin/missions/edit/:id', 'App\Controllers\Admin\AdminMissionController@edit');
+$router->post('admin/missions/edit/:id', 'App\Controllers\Admin\AdminMissionController@update');
 
 try {
     $router->run();

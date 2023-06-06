@@ -50,6 +50,12 @@ abstract class Model
         return $this->query($sql);
     }
 
+    public function allEdit()
+    {
+        $sql = "SELECT * FROM $this->table";
+        return $this->query($sql);
+    }
+
     /**
      * @throws NotFoundException
      */
@@ -57,10 +63,65 @@ abstract class Model
     {
         $sql = "SELECT * FROM $this->table WHERE $this->table.id = ?";
         $result = $this->query($sql, [$id], true);
-             if ($result === false){
+        if ($result === false) {
             throw new NotFoundException("cette id n'existe pas");
         }
         return $result;
+    }
+
+    public function create(array  $data,
+                           ?array $relationStatus = null,
+                           ?array $relationCountries = null,
+                           ?array $relationSpecialities = null,
+                           ?array $relationAgents = null,
+                           ?array $relationTargets = null,
+                           ?array $relationContacts = null,
+                           ?array $relationHideouts = null)
+    {
+        $firstParenthesis = "";
+        $secondParenthesis = "";
+        $i = 1;
+
+        foreach ($data as $key => $value) {
+            $comma = $i === count($data) ? "" : ', '; //ajout virgule tant qu'il y a un champs
+            $firstParenthesis .= "$key$comma";
+            $secondParenthesis .= ":$key$comma";
+            $i++;
+        }
+
+        return $this->query("INSERT INTO $this->table ($firstParenthesis) 
+    VALUES ($secondParenthesis)", $data);
+    }
+
+    public function update(int    $id, array $data,
+                           ?array $relationStatus = null,
+                           ?array $relationCountries = null,
+                           ?array $relationTypesMissions = null,
+                           ?array $relationSpecialities = null,
+                           ?array $relationAgents = null,
+                           ?array $relationTargets = null,
+                           ?array $relationContacts = null,
+                           ?array $relationHideouts = null)
+    {
+        {
+            $sqlRequestPart = "";
+            $i = 1;
+
+            foreach ($data as $key => $value) {
+                $comma = $i === count($data) ? " " : ", ";
+                $sqlRequestPart .= "$key = :$key$comma";
+                $i++;
+            }
+
+            $data['id'] = $id;
+
+            return $this->query("UPDATE $this->table SET $sqlRequestPart WHERE $this->table.id = :id", $data);
+        }
+    }
+
+    public function delete(int $id): bool
+    {
+        return $this->query("DELETE FROM $this->table WHERE $this->table.id = ?", [$id]);
     }
 
     public function query(string $sql, array $param = null, bool $single = null)
@@ -95,6 +156,7 @@ abstract class Model
     {
         return URL::getPositiveInt('page', 1);
     }
+
     public function getPages(): int
     {
         $count = (int)$this->db->getPDO()
@@ -106,6 +168,7 @@ abstract class Model
         $perPage = $this->perPage;
         return ceil($count / $perPage);
     }
+
     public function paginateInfo(): string
     {
         $pages = $this->getPages();

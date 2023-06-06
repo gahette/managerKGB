@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-class Speciality extends Model
+class TypeMission extends Model
 {
-protected $table = 'specialities';
+protected $table = 'types_missions';
 
 private int $id;
-
 private string $name;
 
     /**
