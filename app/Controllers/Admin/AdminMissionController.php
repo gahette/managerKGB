@@ -16,6 +16,9 @@ use Exception;
 
 class AdminMissionController extends Controller
 {
+    /**
+     * @throws Exception
+     */
     public function index()
     {
         $missions = (new Mission($this->getDB()))->all("created_at" . " DESC");

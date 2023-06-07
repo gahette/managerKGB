@@ -53,6 +53,14 @@ $router->post('admin/missions/delete/:id', 'App\Controllers\Admin\AdminMissionCo
 $router->get('admin/missions/edit/:id', 'App\Controllers\Admin\AdminMissionController@edit');
 $router->post('admin/missions/edit/:id', 'App\Controllers\Admin\AdminMissionController@update');
 
+//====== Admin/Countries======
+$router->get('/admin/countries', 'App\Controllers\Admin\AdminCountryController@index');
+$router->get('/admin/countries/create', 'App\Controllers\Admin\AdminCountryController@create');
+$router->post('/admin/countries/create', 'App\Controllers\Admin\AdminCountryController@createCountry');
+$router->post('admin/countries/delete/:id', 'App\Controllers\Admin\AdminCountryController@delete');
+$router->get('admin/countries/edit/:id', 'App\Controllers\Admin\AdminCountryController@edit');
+$router->post('admin/countries/edit/:id', 'App\Controllers\Admin\AdminCountryController@update');
+
 try {
     $router->run();
 } catch (NotFoundException $e) {

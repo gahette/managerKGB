@@ -8,7 +8,8 @@
 >
     <div class="form-group">
         <label for="title">Titre de la mission</label>
-        <input type="text" class="form-control" id="title" name="title" value="<?= isset($params['mission']) ? e($params['mission']->getTitle()) : '' ?>">
+        <input type="text" class="form-control" id="title" name="title"
+               value="<?= isset($params['mission']) ? e($params['mission']->getTitle()) : '' ?>">
     </div>
     <div class="form-group">
         <label for="name_code">Nom de code de la mission</label>
@@ -48,10 +49,12 @@
         <select class="form-select" multiple aria-label="multiple select example" id="countries" name="countries[]">
             <?php foreach ($params['countries'] as $country): ?>
                 <option value="<?= $country->getId() ?>"
-                    <?php foreach ($params['mission']->getCountries() as $missionCountry) {
-                        echo ($country->getId() === $missionCountry->getId()) ? 'selected' : '';
-                    }
-                    ?>
+                    <?php if (isset($params['mission'])): ?>
+                        <?php foreach ($params['mission']->getCountries() as $missionCountry) {
+                            echo ($country->getId() === $missionCountry->getId()) ? 'selected' : '';
+                        }
+                        ?>
+                    <?php endif; ?>
                 ><?= $country->getName() ?></option>
             <?php endforeach; ?>
         </select>
@@ -62,10 +65,12 @@
         <select class="form-select" multiple aria-label="multiple select example" id="types" name="types[]">
             <?php foreach ($params['typesMissions'] as $typesMission): ?>
                 <option value="<?= $typesMission->getId() ?>"
-                    <?php foreach ($params['mission']->getTypesMissions() as $missionTypeMission) {
-                        echo ($typesMission->getId() === $missionTypeMission->getId()) ? 'selected' : '';
-                    }
-                    ?>
+                    <?php if (isset($params['mission'])): ?>
+                        <?php foreach ($params['mission']->getTypesMissions() as $missionTypeMission) {
+                            echo ($typesMission->getId() === $missionTypeMission->getId()) ? 'selected' : '';
+                        }
+                        ?>
+                    <?php endif; ?>
                 ><?= $typesMission->getName() ?></option>
             <?php endforeach; ?>
         </select>
@@ -73,13 +78,16 @@
 
     <div class="form-group">
         <label for="specialities">Spécialité(s) pour cette mission</label>
-        <select class="form-select" multiple aria-label="multiple select example" id="specialities" name="specialities[]">
+        <select class="form-select" multiple aria-label="multiple select example" id="specialities"
+                name="specialities[]">
             <?php foreach ($params['specialities'] as $speciality): ?>
                 <option value="<?= $speciality->getId() ?>"
-                    <?php foreach ($params['mission']->getSpecialities() as $missionSpeciality) {
-                        echo ($speciality->getId() === $missionSpeciality->getId()) ? 'selected' : '';
-                    }
-                    ?>
+                    <?php if (isset($params['mission'])): ?>
+                        <?php foreach ($params['mission']->getSpecialities() as $missionSpeciality) {
+                            echo ($speciality->getId() === $missionSpeciality->getId()) ? 'selected' : '';
+                        }
+                        ?>
+                    <?php endif; ?>
                 ><?= $speciality->getName() ?></option>
             <?php endforeach; ?>
         </select>
@@ -90,10 +98,12 @@
         <select class="form-select" multiple aria-label="multiple select example" id="agents" name="agents[]">
             <?php foreach ($params['agents'] as $agent): ?>
                 <option value="<?= $agent->getId() ?>"
-                    <?php foreach ($params['mission']->getAgents() as $missionAgent) {
-                        echo ($agent->getId() === $missionAgent->getId()) ? 'selected' : '';
-                    }
-                    ?>
+                    <?php if (isset($params['mission'])): ?>
+                        <?php foreach ($params['mission']->getAgents() as $missionAgent) {
+                            echo ($agent->getId() === $missionAgent->getId()) ? 'selected' : '';
+                        }
+                        ?>
+                    <?php endif; ?>
                 ><?= $agent->getLastname() ?></option>
             <?php endforeach; ?>
         </select>
@@ -104,10 +114,12 @@
         <select class="form-select" multiple aria-label="multiple select example" id="targets" name="targets[]">
             <?php foreach ($params['targets'] as $target): ?>
                 <option value="<?= $target->getId() ?>"
-                    <?php foreach ($params['mission']->getTargets() as $missionTarget) {
-                        echo ($target->getId() === $missionTarget->getId()) ? 'selected' : '';
-                    }
-                    ?>
+                    <?php if (isset($params['mission'])): ?>
+                        <?php foreach ($params['mission']->getTargets() as $missionTarget) {
+                            echo ($target->getId() === $missionTarget->getId()) ? 'selected' : '';
+                        }
+                        ?>
+                    <?php endif; ?>
                 ><?= $target->getLastname() ?></option>
             <?php endforeach; ?>
         </select>
@@ -118,10 +130,12 @@
         <select class="form-select" multiple aria-label="multiple select example" id="contacts" name="contacts[]">
             <?php foreach ($params['contacts'] as $contact): ?>
                 <option value="<?= $contact->getId() ?>"
-                    <?php foreach ($params['mission']->getContacts() as $missionContact) {
-                        echo ($contact->getId() === $missionContact->getId()) ? 'selected' : '';
-                    }
-                    ?>
+                    <?php if (isset($params['mission'])): ?>
+                        <?php foreach ($params['mission']->getContacts() as $missionContact) {
+                            echo ($contact->getId() === $missionContact->getId()) ? 'selected' : '';
+                        }
+                        ?>
+                    <?php endif; ?>
                 ><?= $contact->getLastname() ?></option>
             <?php endforeach; ?>
         </select>
@@ -132,14 +146,17 @@
         <select class="form-select" multiple aria-label="multiple select example" id="hideouts" name="hideouts[]">
             <?php foreach ($params['hideouts'] as $hideout): ?>
                 <option value="<?= $hideout->getId() ?>"
-                    <?php foreach ($params['mission']->getHideouts() as $missionHideout) {
-                        echo ($hideout->getId() === $missionHideout->getId()) ? 'selected' : '';
-                    }
-                    ?>
+                    <?php if (isset($params['mission'])): ?>
+                        <?php foreach ($params['mission']->getHideouts() as $missionHideout) {
+                            echo ($hideout->getId() === $missionHideout->getId()) ? 'selected' : '';
+                        }
+                        ?>
+                    <?php endif; ?>
                 ><?= $hideout->getAddress() ?></option>
             <?php endforeach; ?>
         </select>
     </div>
 
-    <button type="submit" class="btn btn-primary"><?= isset($params['mission']) ? 'Enregistrer les modifications' : 'Enregistrer la mission' ?></button>
+    <button type="submit"
+            class="btn btn-primary"><?= isset($params['mission']) ? 'Enregistrer les modifications' : 'Enregistrer la mission' ?></button>
 </form>
