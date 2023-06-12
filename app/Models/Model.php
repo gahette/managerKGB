@@ -69,15 +69,7 @@ abstract class Model
         return $result;
     }
 
-    public function create(array  $data,
-                           ?array $relationStatus = null,
-                           ?array $relationCountries = null,
-                           ?array $relationSpecialities = null,
-                           ?array $relationAgents = null,
-                           ?array $relationTargets = null,
-                           ?array $relationContacts = null,
-                           ?array $relationHideouts = null)
-    {
+    public function create(array  $data){
         $firstParenthesis = "";
         $secondParenthesis = "";
         $i = 1;
@@ -93,15 +85,7 @@ abstract class Model
     VALUES ($secondParenthesis)", $data);
     }
 
-    public function update(int    $id, array $data,
-                           ?array $relationStatus = null,
-                           ?array $relationCountries = null,
-                           ?array $relationTypesMissions = null,
-                           ?array $relationSpecialities = null,
-                           ?array $relationAgents = null,
-                           ?array $relationTargets = null,
-                           ?array $relationContacts = null,
-                           ?array $relationHideouts = null)
+    public function update(int $id, array $data)
     {
         {
             $sqlRequestPart = "";

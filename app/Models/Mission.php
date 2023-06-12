@@ -142,6 +142,9 @@ class Mission extends Model
         WHERE mt.mission_id = ?", [$this->id]);
     }
 
+    /**
+     * @throws Exception
+     */
     public function create(
         array  $data,
         ?array $relationStatus = null,
@@ -210,6 +213,9 @@ class Mission extends Model
         return true;
     }
 
+    /**
+     * @throws Exception
+     */
     public function update(
         int $id,
         array $data,

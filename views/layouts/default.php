@@ -46,10 +46,16 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/managerKGB/admin/missions">Missions</a></li>
-                                <li><a class="dropdown-item" href="/managerKGB/admin/countries">Pays</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="/managerKGB/admin/agents">Agents</a></li>
+                                <li><a class="dropdown-item" href="/managerKGB/admin/contacts">Contacts</a></li>
+                                <li><a class="dropdown-item" href="/managerKGB/admin/targets">Cibles</a></li>
+                                <li><a class="dropdown-item" href="/managerKGB/admin/hideouts">Planques</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="/managerKGB/admin/status">États</a></li>
+                                <li><a class="dropdown-item" href="/managerKGB/admin/countries">Pays</a></li>
+                                <li><a class="dropdown-item" href="/managerKGB/admin/typesmissions">Types de mission</a></li>
+                                <li><a class="dropdown-item" href="/managerKGB/admin/specialities">Spécialité</a></li>
+                                <li><a class="dropdown-item" href="/managerKGB/admin/typeshideouts">Types de planques</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">

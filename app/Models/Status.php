@@ -5,6 +5,7 @@ namespace App\Models;
 class Status extends Model
 {
     protected $table = 'status';
+    public $perPage = 12;
 
     private int $id;
     private string $name;

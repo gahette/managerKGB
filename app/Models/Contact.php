@@ -81,4 +81,56 @@ class Contact extends Model
                 INNER JOIN contact_mission m on cm.mission_id = m.mission_id
                     WHERE contact_id = ?", [$this->id]);
     }
+
+    /**
+     * @throws Exception
+     */
+    public function createNewContact(
+        array  $data,
+        ?array $relationCountries = null
+    ): bool
+    {
+
+        parent::create($data);
+
+        $id = $this->db->getPDO()->lastInsertId();
+
+        foreach ($relationCountries as $countryId) {
+            $stmtCountries = $this->db->getPDO()->prepare("INSERT INTO contact_country (contact_id, country_id) VALUES (?, ?)");
+            $resultInsertCountry = $stmtCountries->execute([$id, $countryId]);
+            if (!$resultInsertCountry)
+                throw new Exception('Erreur lors de l\'ajout d\'un enregistrement dans contact_country');
+        }
+        return true;
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function updateContact(
+        int    $id,
+        array  $data,
+
+        ?array $relationCountries = null
+
+    ): bool
+    {
+        parent::update($id, $data);
+
+
+        $stmtCountries = $this->db->getPDO()->prepare("DELETE FROM contact_country WHERE contact_country.contact_id = ?");
+        $resultCountries = $stmtCountries->execute([$id]);
+        if (!$resultCountries)
+            throw new Exception('Erreur lors de la suppression des enregistrements de contact_country');
+
+        foreach ($relationCountries as $countryId) {
+            $stmtCountries = $this->db->getPDO()->prepare("INSERT INTO contact_country (contact_id, country_id) VALUES (?, ?)");
+            $resultInsertCountry = $stmtCountries->execute([$id, $countryId]);
+            if (!$resultInsertCountry)
+                throw new Exception('Erreur lors de l\'ajout d\'un enregistrement dans contact_country');
+        }
+
+        return true;
+
+    }
 }

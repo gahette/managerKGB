@@ -79,4 +79,5 @@ class MissionController extends Controller
         $hideout = (new Hideout($this->getDB()))->findById($id);
         $this->view('mission.hideout', compact('hideout'));
     }
+
 }

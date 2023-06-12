@@ -81,4 +81,55 @@ class Target extends Model
                 INNER JOIN mission_target m on cm.mission_id = m.mission_id
                     WHERE target_id = ?", [$this->id]);
     }
+    /**
+     * @throws Exception
+     */
+    public function createNewTarget(
+        array  $data,
+        ?array $relationCountries = null
+    ): bool
+    {
+
+        parent::create($data);
+
+        $id = $this->db->getPDO()->lastInsertId();
+
+        foreach ($relationCountries as $countryId) {
+            $stmtCountries = $this->db->getPDO()->prepare("INSERT INTO country_target (target_id, country_id) VALUES (?, ?)");
+            $resultInsertCountry = $stmtCountries->execute([$id, $countryId]);
+            if (!$resultInsertCountry)
+                throw new Exception('Erreur lors de l\'ajout d\'un enregistrement dans target_country');
+        }
+        return true;
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function updateTarget(
+        int    $id,
+        array  $data,
+
+        ?array $relationCountries = null
+
+    ): bool
+    {
+        parent::update($id, $data);
+
+
+        $stmtCountries = $this->db->getPDO()->prepare("DELETE FROM country_target WHERE country_target.target_id = ?");
+        $resultCountries = $stmtCountries->execute([$id]);
+        if (!$resultCountries)
+            throw new Exception('Erreur lors de la suppression des enregistrements de country_target');
+
+        foreach ($relationCountries as $countryId) {
+            $stmtCountries = $this->db->getPDO()->prepare("INSERT INTO country_target (target_id, country_id) VALUES (?, ?)");
+            $resultInsertCountry = $stmtCountries->execute([$id, $countryId]);
+            if (!$resultInsertCountry)
+                throw new Exception('Erreur lors de l\'ajout d\'un enregistrement dans country_target');
+        }
+
+        return true;
+
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Models;
 class Speciality extends Model
 {
 protected $table = 'specialities';
+public $perPage = 12;
 
 private int $id;
 

@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-class TypeMission extends Model
+class TypeHideout extends Model
 {
-protected $table = 'types_missions';
+protected $table = 'types_hideouts';
+
 public $perPage = 12;
 
 private int $id;
@@ -25,4 +26,5 @@ private string $name;
     {
         return $this->name;
     }
+
 }

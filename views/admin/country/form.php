@@ -6,18 +6,18 @@
         method="POST"
         onsubmit="return confirm('Voulez-vous vraiment effectuer cette action ?')"
 >
-    <div class="form-group">
-        <label for="name">Pays</label>
+    <div class="form-group mb-3">
+        <label for="name"><strong>Pays</strong></label>
         <input type="text" class="form-control" id="name" name="name"
                value="<?= isset($params['country']) ? e($params['country']->getName()) : '' ?>">
     </div>
-    <div class="form-group">
-        <label for="nationalities">Nationalité</label>
+    <div class="form-group mb-3">
+        <label for="nationalities"><strong>Nationalité</strong></label>
         <input type="text" class="form-control" id="nationalities" name="nationalities"
                value="<?= isset($params['country']) ? e($params['country']->getNationalities()) : '' ?>">
     </div>
-    <div class="form-group">
-        <label for="iso3166">Code iso</label>
+    <div class="form-group mb-3">
+        <label for="iso3166"><strong>Code iso</strong></label>
         <input type="text" class="form-control" id="iso3166" name="iso3166"
                value="<?= isset($params['country']) ? e($params['country']->getIso3166()) : '' ?>">
     </div>

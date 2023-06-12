@@ -2,18 +2,16 @@
 
 namespace App\Controllers\Admin;
 
-use App\Models\Agent;
-use App\Models\Contact;
+use App\Controllers\Controller;
 use App\Models\Country;
-use App\Models\Hideout;
-use App\Models\Mission;
-use App\Models\Speciality;
-use App\Models\Status;
-use App\Models\Target;
-use App\Models\TypeMission;
+use Exception;
 
-class AdminCountryController extends \App\Controllers\Controller
+
+class AdminCountryController extends Controller
 {
+    /**
+     * @throws Exception
+     */
     public function index()
     {
         $countries = (new Country($this->getDB()))->all("" );
