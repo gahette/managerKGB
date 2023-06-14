@@ -46,8 +46,7 @@ class Agent extends Model
      */
     public function getDateOfBirth(): string
     {
-        return (new DateTime($this->date_of_birth))
-            ->format('d/m/Y');
+        return (new DateTime($this->date_of_birth))->format('d/m/Y');
     }
 
     /**

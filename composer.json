@@ -19,5 +19,10 @@
     "ext-pdo": "*",
     "symfony/var-dumper": "^5.4",
     "filp/whoops": "^2.15"
+  },
+  "config": {
+    "allow-plugins": {
+      "robloach/component-installer": true
+    }
   }
 }

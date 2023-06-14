@@ -16,10 +16,15 @@
         <input type="text" class="form-control" id="firstname" name="firstname"
                value="<?= isset($params['target']) ? e($params['target']->getFirstname()) : '' ?>">
     </div>
-    <div class="form-group mb-3">
+    <div class="form-group">
         <label for="date_of_birth"><strong>Date de naissance de la cible</strong></label>
-        <input type="text" class="form-control" id="date_of_birth" name="date_of_birth"
-               value="<?= isset($params['target']) ? e($params['target']->getDateOfBirth()) : '' ?>">
+        <div class="datepicker date input-group">
+            <input type="text"  class="form-control" id="date_of_birth" name="date_of_birth"
+                   value="<?= isset($params['target']) ? e($params['target']->getDateOfBirth()) : '' ?>">
+            <div class="input-group-append">
+
+            </div>
+        </div>
     </div>
     <div class="form-group mb-3">
         <label for="name_code"><strong>Nom de code de la cible</strong></label>

@@ -39,7 +39,7 @@ $link = "countries";
                         <?php endforeach; ?>
                         <?php foreach ($country->getHideouts() as $hideout): ?>
                             <p class="badge bg-primary"><a href="/managerKGB/hideout/<?= e($hideout->getId()) ?>"
-                                                           class="text-white link-underline link-underline-opacity-0"><?= e($hideout->code) ?></a>
+                                                           class="text-white link-underline link-underline-opacity-0"><?= ($hideout->code) ?></a>
                             </p>
                         <?php endforeach; ?>
                     </div>

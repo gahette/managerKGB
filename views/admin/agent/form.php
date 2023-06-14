@@ -16,15 +16,22 @@
         <input type="text" class="form-control" id="firstname" name="firstname"
                value="<?= isset($params['agent']) ? e($params['agent']->getFirstname()) : '' ?>">
     </div>
-    <div class="form-group mb-3">
+
+    <div class="form-group">
         <label for="date_of_birth"><strong>Date de naissance de l'agent</strong></label>
-        <input type="text" class="form-control" id="date_of_birth" name="date_of_birth"
-               value="<?= isset($params['agent']) ? e($params['agent']->getDateOfBirth()) : '' ?>">
+        <div class="datepicker date input-group">
+            <input type="text"  class="form-control" id="date_of_birth" name="date_of_birth"
+                   value="<?= isset($params['agent']) ? e($params['agent']->getDateOfBirth()) : '' ?>">
+            <div class="input-group-append">
+
+            </div>
+        </div>
     </div>
+
     <div class="form-group mb-3">
         <label for="id_code"><strong>Code Identification de l'agent</strong></label>
         <input type="text" class="form-control" id="id_code" name="id_code"
-               value="<?= isset($params['agent']) ? e($params['agent']->getIdcode()) : '' ?>">
+               value="<?= isset($params['agent']) ? e($params['agent']->getIdCode()) : '' ?>">
     </div>
 
     <div class="form-group mb-3">

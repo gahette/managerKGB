@@ -117,6 +117,14 @@ $router->post('admin/targets/delete/:id', 'App\Controllers\Admin\AdminTargetCont
 $router->get('admin/targets/edit/:id', 'App\Controllers\Admin\AdminTargetController@edit');
 $router->post('admin/targets/edit/:id', 'App\Controllers\Admin\AdminTargetController@update');
 
+//====== Admin/Hideouts======
+$router->get('/admin/hideouts', 'App\Controllers\Admin\AdminHideoutController@index');
+$router->get('/admin/hideouts/create', 'App\Controllers\Admin\AdminHideoutController@create');
+$router->post('/admin/hideouts/create', 'App\Controllers\Admin\AdminHideoutController@createHideout');
+$router->post('admin/hideouts/delete/:id', 'App\Controllers\Admin\AdminHideoutController@delete');
+$router->get('admin/hideouts/edit/:id', 'App\Controllers\Admin\AdminHideoutController@edit');
+$router->post('admin/hideouts/edit/:id', 'App\Controllers\Admin\AdminHideoutController@update');
+
 
 
 try {
