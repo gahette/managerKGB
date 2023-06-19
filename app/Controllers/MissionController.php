@@ -18,6 +18,8 @@ class MissionController extends Controller
      */
     public function index()
     {
+        $this->isAdmin();
+
         $mission = new Mission($this->getDB());
         $missions = $mission->all("created_at" . " DESC");
 
@@ -29,6 +31,8 @@ class MissionController extends Controller
      */
     public function show(int $id)
     {
+        $this->isAdmin();
+
         $mission = new Mission($this->getDB());
         $mission = $mission->findByID($id);
 
@@ -40,6 +44,8 @@ class MissionController extends Controller
      */
     public function country(int $id)
     {
+        $this->isAdmin();
+
         $country = (new Country($this->getDB()))->findById($id);
         $this->view('mission.country', compact('country'));
     }
@@ -49,6 +55,8 @@ class MissionController extends Controller
      */
     public function agent(int $id)
     {
+        $this->isAdmin();
+
         $agent = (new Agent($this->getDB()))->findById($id);
         $this->view('mission.agent', compact('agent'));
     }
@@ -58,6 +66,8 @@ class MissionController extends Controller
      */
     public function contact(int $id)
     {
+        $this->isAdmin();
+
         $contact = (new Contact($this->getDB()))->findById($id);
         $this->view('mission.contact', compact('contact'));
     }
@@ -67,6 +77,8 @@ class MissionController extends Controller
      */
     public function target(int $id)
     {
+        $this->isAdmin();
+
         $target = (new Target($this->getDB()))->findById($id);
         $this->view('mission.target', compact('target'));
     }

@@ -125,6 +125,13 @@ $router->post('admin/hideouts/delete/:id', 'App\Controllers\Admin\AdminHideoutCo
 $router->get('admin/hideouts/edit/:id', 'App\Controllers\Admin\AdminHideoutController@edit');
 $router->post('admin/hideouts/edit/:id', 'App\Controllers\Admin\AdminHideoutController@update');
 
+//====== Users/login======
+$router->get('/', 'App\Controllers\UserController@welcome');
+$router->get('/login', 'App\Controllers\UserController@login');
+$router->post('/login', 'App\Controllers\UserController@loginUsername');
+
+//====== Logout======
+$router->get('/logout', 'App\Controllers\UserController@logout');
 
 
 try {

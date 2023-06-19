@@ -9,6 +9,7 @@ $link = "missions";
 
 
 <h2>Les Missions</h2>
+
 <div class="row">
     <?php foreach ($params['missions'] as $mission): ?>
         <div class="col-md-4">

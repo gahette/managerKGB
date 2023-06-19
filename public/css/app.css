@@ -34,7 +34,7 @@ input.form-control::placeholder {
 
 .datepicker-dropdown {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    margin-top: 102px;
+    margin-top: 10px;
 }
 
 .datepicker {
