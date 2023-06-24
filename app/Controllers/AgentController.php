@@ -3,10 +3,14 @@
 namespace App\Controllers;
 
 use App\Models\Agent;
-use App\Models\Country;
+use Exception;
+
 
 class AgentController extends Controller
 {
+    /**
+     * @throws Exception
+     */
     public function index()
     {
         $this->isAdmin();

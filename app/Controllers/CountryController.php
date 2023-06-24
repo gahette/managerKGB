@@ -3,9 +3,13 @@
 namespace App\Controllers;
 
 use App\Models\Country;
+use Exception;
 
 class CountryController extends Controller
 {
+    /**
+     * @throws Exception
+     */
     public function index()
     {
         $this->isAdmin();

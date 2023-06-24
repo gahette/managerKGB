@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
+use App\Exceptions\NotFoundException;
 use App\Models\Country;
 use Exception;
 
@@ -34,6 +35,10 @@ class AdminCountryController extends Controller
             exit;
         }
     }
+
+    /**
+     * @throws NotFoundException
+     */
     public function edit(int $id)
     {
         $country = (new Country($this->getDB()))->findById($id);

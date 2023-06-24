@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
+use App\Exceptions\NotFoundException;
 use App\Models\Agent;
 use App\Models\Contact;
 use App\Models\Country;
@@ -49,6 +50,9 @@ class AdminMissionController extends Controller
         ));
     }
 
+    /**
+     * @throws Exception
+     */
     public function createMission()
     {
         $mission = new Mission($this->getDB());
@@ -70,6 +74,9 @@ class AdminMissionController extends Controller
         }
     }
 
+    /**
+     * @throws NotFoundException
+     */
     public function edit(int $id)
     {
         $mission = (new Mission($this->getDB()))->findById($id);

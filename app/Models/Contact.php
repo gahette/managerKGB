@@ -46,9 +46,16 @@ class Contact extends Model
      */
     public function getDateOfBirth(): string
     {
-        return (new DateTime($this->date_of_birth))->format('d/m/Y');
+        return (new DateTime($this->date_of_birth))->format('Y/m/d');
     }
 
+    /**
+     * @throws Exception
+     */
+    public function getDateOfBirthF(): string
+    {
+        return (new DateTime($this->date_of_birth))->format('d/m/Y');
+    }
     /**
      * @return string
      */

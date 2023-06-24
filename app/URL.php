@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Exceptions\NotFoundException;
-use Exception;
 
 class URL
 {

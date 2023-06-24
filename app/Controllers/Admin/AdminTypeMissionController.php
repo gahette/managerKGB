@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
+use App\Exceptions\NotFoundException;
 use App\Models\TypeMission;
 use Exception;
 
@@ -33,6 +34,10 @@ class AdminTypeMissionController extends Controller
             exit;
         }
     }
+
+    /**
+     * @throws NotFoundException
+     */
     public function edit(int $id)
     {
         $typeMission = (new TypeMission($this->getDB()))->findById($id);

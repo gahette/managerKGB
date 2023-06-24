@@ -9,6 +9,9 @@ use Exception;
 
 class UserController extends Controller
 {
+    /**
+     * @throws Exception
+     */
     public function index()
     {
         $this->isAdmin();
@@ -32,6 +35,9 @@ class UserController extends Controller
         $this->view('auth.login');
     }
 
+    /**
+     * @throws Exception
+     */
     public function loginUsername()
     {
         $validator = new Validator($_POST);
@@ -50,7 +56,7 @@ class UserController extends Controller
 
         if (password_verify($_POST['password'], $user->getPassword())) {
 
-            $_SESSION['auth'] = [(int)$user->getAdmin(),
+            $_SESSION['auth'] = [$user->getAdmin(),
                 $user->getUsername(),
                 $user->getLastname(),
                 $user->getFirstname(),

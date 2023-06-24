@@ -3,15 +3,17 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
-use App\Models\Agent;
+use App\Exceptions\NotFoundException;
 use App\Models\Country;
 use App\Models\Hideout;
-use App\Models\Speciality;
 use App\Models\TypeHideout;
 use Exception;
 
 class AdminHideoutController extends Controller
 {
+    /**
+     * @throws Exception
+     */
     public function index()
     {
         $hideouts = (new Hideout($this->getDB()))->all("");
@@ -39,10 +41,6 @@ class AdminHideoutController extends Controller
         $typesHideouts = array_pop($_POST);
         $countries = array_pop($_POST);
 
-
-
-
-//dd($specialities, $countries);
         $result = $hideout->createNewHideout($_POST, $countries, $typesHideouts);
 
         if ($result) {
@@ -50,6 +48,10 @@ class AdminHideoutController extends Controller
             exit;
         }
     }
+
+    /**
+     * @throws NotFoundException
+     */
     public function edit(int $id)
     {
         $hideout = (new Hideout($this->getDB()))->findById($id);
@@ -64,6 +66,9 @@ class AdminHideoutController extends Controller
         ));
     }
 
+    /**
+     * @throws Exception
+     */
     public function update(int $id)
     {
         $hideout = new Hideout($this->getDB());
@@ -71,7 +76,6 @@ class AdminHideoutController extends Controller
         $typesHideouts = array_pop($_POST);
         $countries = array_pop($_POST);
 
-//dd($countries, $specialities);
         $result = $hideout->updateHideout($id, $_POST, $countries, $typesHideouts );
 
         if ($result) {

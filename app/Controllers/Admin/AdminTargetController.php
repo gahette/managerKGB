@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
+use App\Exceptions\NotFoundException;
 use App\Models\Country;
 use App\Models\Target;
 use Exception;
@@ -44,6 +45,10 @@ class AdminTargetController extends Controller
             exit;
         }
     }
+
+    /**
+     * @throws NotFoundException
+     */
     public function edit(int $id)
     {
         $target = (new Target($this->getDB()))->findById($id);

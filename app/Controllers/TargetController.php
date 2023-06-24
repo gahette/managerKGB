@@ -2,11 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Models\Contact;
 use App\Models\Target;
+use Exception;
 
 class TargetController extends Controller
 {
+    /**
+     * @throws Exception
+     */
     public function index()
     {
         $this->isAdmin();

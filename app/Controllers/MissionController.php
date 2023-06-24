@@ -18,8 +18,9 @@ class MissionController extends Controller
      */
     public function index()
     {
-        $this->isUser();
         $this->isAdmin();
+
+//TODO : pertinence isAdmin ici ??
 
         $mission = new Mission($this->getDB());
         $missions = $mission->all("created_at" . " DESC");

@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
+use App\Exceptions\NotFoundException;
 use App\Models\Status;
 use Exception;
 
@@ -33,6 +34,10 @@ class AdminStatusController extends Controller
             exit;
         }
     }
+
+    /**
+     * @throws NotFoundException
+     */
     public function edit(int $id)
     {
         $status = (new Status($this->getDB()))->findById($id);

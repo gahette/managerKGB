@@ -2,7 +2,9 @@
 
 namespace App\Controllers;
 
-class TypeMission extends \App\Models\Model
+use App\Models\Model;
+
+class TypeMission extends Model
 {
 protected $table = 'types_missions';
 

@@ -14,7 +14,7 @@
                 margin-top: 100px;
                 padding: 4rem 2rem;
                 margin-bottom: 2rem;
-                background-color: var(--bs-light);
+                background-color: $gray-100;
                 border-radius: .3rem;
             }
         </style>

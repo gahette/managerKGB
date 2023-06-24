@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
+use App\Exceptions\NotFoundException;
 use App\Models\Speciality;
 use Exception;
 
@@ -33,6 +34,10 @@ class AdminSpecialityController extends Controller
             exit;
         }
     }
+
+    /**
+     * @throws NotFoundException
+     */
     public function edit(int $id)
     {
         $speciality = (new Speciality($this->getDB()))->findById($id);

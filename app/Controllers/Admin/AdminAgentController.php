@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
+use App\Exceptions\NotFoundException;
 use App\Models\Agent;
 use App\Models\Country;
 use App\Models\Speciality;
@@ -42,9 +43,6 @@ class AdminAgentController extends Controller
         $countries = array_pop($_POST);
 
 
-
-
-//dd($specialities, $countries);
         $result = $agent->createNewAgent($_POST, $countries, $specialities);
 
         if ($result) {
@@ -52,6 +50,10 @@ class AdminAgentController extends Controller
             exit;
         }
     }
+
+    /**
+     * @throws NotFoundException
+     */
     public function edit(int $id)
     {
         $agent = (new Agent($this->getDB()))->findById($id);
@@ -65,6 +67,7 @@ class AdminAgentController extends Controller
             'specialities',
         ));
     }
+
     /**
      * @throws Exception
      */
@@ -75,8 +78,7 @@ class AdminAgentController extends Controller
         $specialities = array_pop($_POST);
         $countries = array_pop($_POST);
 
-//dd($countries, $specialities);
-        $result = $agent->updateAgent($id, $_POST, $countries, $specialities );
+        $result = $agent->updateAgent($id, $_POST, $countries, $specialities);
 
         if ($result) {
             header('Location: /managerKGB/admin/agents');

@@ -30,7 +30,7 @@ $link = "contacts";
             <th scope="row"><?= e($contact->getId()) ?></th>
             <td><?= e($contact->getLastname()) ?></td>
             <td><?= e($contact->getFirstname()) ?></td>
-            <td><?= e($contact->getDateOfBirth()) ?></td>
+            <td><?= e($contact->getDateOfBirthF()) ?></td>
             <td><?= e($contact->getNamecode()) ?></td>
             <td>
                 <?php foreach ($contact->getCountries() as $k => $country):

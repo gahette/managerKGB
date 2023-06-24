@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\Controller;
+use App\Exceptions\NotFoundException;
 use App\Models\TypeHideout;
 use Exception;
 
@@ -33,6 +34,10 @@ class AdminTypeHideoutController extends Controller
             exit;
         }
     }
+
+    /**
+     * @throws NotFoundException
+     */
     public function edit(int $id)
     {
         $typeHideout = (new TypeHideout($this->getDB()))->findById($id);
