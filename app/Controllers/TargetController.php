@@ -9,6 +9,8 @@ class TargetController extends Controller
 {
     public function index()
     {
+        $this->isAdmin();
+
         $target = new Target($this->getDB());
         $targets = $target->all("");
 

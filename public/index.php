@@ -133,6 +133,9 @@ $router->post('/login', 'App\Controllers\UserController@loginUsername');
 //====== Logout======
 $router->get('/logout', 'App\Controllers\UserController@logout');
 
+//====== Users ======
+$router->get('users', 'App\Controllers\UserController@index');
+
 
 try {
     $router->run();

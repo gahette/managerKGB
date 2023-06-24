@@ -30,7 +30,7 @@ $link = "agents";
             <th scope="row"><?= e($agent->getId()) ?></th>
             <td><?= e($agent->getLastname()) ?></td>
             <td><?= e($agent->getFirstname()) ?></td>
-            <td><?= e($agent->getDateOfBirth()) ?></td>
+            <td><?= e($agent->getDateOfBirthF()) ?></td>
             <td><?= e($agent->getIdCode()) ?></td>
             <td>
                 <?php foreach ($agent->getCountries() as $k => $country):

@@ -8,6 +8,8 @@ class CountryController extends Controller
 {
     public function index()
     {
+        $this->isAdmin();
+
         $country = new Country($this->getDB());
         $countries = $country->all("");
 

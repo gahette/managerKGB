@@ -5,14 +5,17 @@ namespace App\Validation;
 class Validator
 {
     private array $data;
-    private array $errors;
+    private ?array $errors = [];
 
     public function __construct(array $data)
     {
         $this->data = $data;
 
     }
-
+    private function getErrors(): ?array
+    {
+        return $this->errors;
+    }
     public function validate(array $rules): ?array
     {
         foreach ($rules as $name => $rulesarray) {
@@ -54,8 +57,5 @@ class Validator
         }
     }
 
-    private function getErrors(): ?array
-    {
-        return $this->errors;
-    }
+
 }

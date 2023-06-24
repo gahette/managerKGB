@@ -9,6 +9,8 @@ class AgentController extends Controller
 {
     public function index()
     {
+        $this->isAdmin();
+
         $agent = new Agent($this->getDB());
         $agents = $agent->all("");
 

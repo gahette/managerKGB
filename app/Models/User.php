@@ -87,8 +87,6 @@ class User extends Model
         return $this->admin;
     }
 
-
-
     public function getByUsername(string $username): User
     {
         return $this->query("SELECT * FROM $this->table WHERE $this->table.username = ?", [$username], true);

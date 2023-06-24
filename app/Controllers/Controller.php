@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\User;
 use Database\DBConnection;
 
 abstract class Controller
@@ -37,7 +36,7 @@ abstract class Controller
 
     protected function isAdmin()
     {
-        if (isset($_SESSION['auth']) && $_SESSION['auth'] === 1) {
+        if (isset($_SESSION['auth']) && $_SESSION['auth'][0] === 1) {
             return true;
         } else {
             header('Location: /managerKGB/login');

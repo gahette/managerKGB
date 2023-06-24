@@ -83,8 +83,17 @@
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <?php if (isset($_SESSION['auth'])): ?>
-                            <li class="nav-item">
-                                <a href="/managerKGB/logout" class="nav-link">Se déconnecter</a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-display="static"
+                                   aria-expanded="false">
+                                    <?= $_SESSION['auth'][3] . ' ' . $_SESSION['auth'][2] ?>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a href="/managerKGB/users" class="nav-link">Profil</a></li>
+
+                                    <li><hr class="dropdown-divider"></li>
+
+                                    <li><a href="/managerKGB/logout" class="nav-link">Se déconnecter</a></li>
                             </li>
                         <?php endif; ?>
                     </ul>

@@ -18,6 +18,7 @@ class MissionController extends Controller
      */
     public function index()
     {
+        $this->isUser();
         $this->isAdmin();
 
         $mission = new Mission($this->getDB());
@@ -88,6 +89,8 @@ class MissionController extends Controller
      */
     public function hideout(int $id)
     {
+        $this->isAdmin();
+
         $hideout = (new Hideout($this->getDB()))->findById($id);
         $this->view('mission.hideout', compact('hideout'));
     }
